@@ -23,5 +23,39 @@ public class CiudadRestController {
 		Ciudad ciudad = ciudadRepository.findById(id).get();
 		return new ResponseEntity<Ciudad>(ciudad, HttpStatus.OK);
 	}
+	
+	/**
+	 * Elimina una ciudad mediante su identificador
+	 * @param id
+	 * @return
+	 * @author bverad
+	 */
+	@RequestMapping(value="ciudad/eliminar/{id}", method=RequestMethod.GET)
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="id") Integer id){
+		Ciudad ciudad = ciudadRepository.findById(id).get();
+		String mensaje = "Ciudad eliminada con exito : " + ciudad.getDescripcion();
+		if(ciudad == null) {
+			mensaje = "No existe la ciudad que desea eliminar.";
+		}
+		ciudadRepository.delete(ciudad);
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
+	
+	/**
+	 * Elimina una ciudad mediante su descripcion
+	 * @param id
+	 * @return
+	 * @author bverad
+	 */
+	@RequestMapping(value="ciudad/eliminar/descripcion/{descripcion}", method=RequestMethod.GET)
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="descripcion") String descripcion){
+		Ciudad ciudad = ciudadRepository.findByDescripcion(descripcion);
+		String mensaje = "Ciudad eliminada con exito : " + ciudad.getDescripcion();
+		if(ciudad == null) {
+			mensaje = "No existe la ciudad que desea eliminar.";
+		}
+		ciudadRepository.delete(ciudad);
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
 
 }
