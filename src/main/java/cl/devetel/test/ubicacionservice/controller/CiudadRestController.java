@@ -40,5 +40,22 @@ public class CiudadRestController {
 		ciudadRepository.delete(ciudad);
 		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
 	}
+	
+	/**
+	 * Elimina una ciudad mediante su descripcion
+	 * @param id
+	 * @return
+	 * @author bverad
+	 */
+	@RequestMapping(value="ciudad/eliminar/descripcion/{descripcion}", method=RequestMethod.GET)
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="descripcion") String descripcion){
+		Ciudad ciudad = ciudadRepository.findByDescripcion(descripcion);
+		String mensaje = "Ciudad eliminada con exito : " + ciudad.getDescripcion();
+		if(ciudad == null) {
+			mensaje = "No existe la ciudad que desea eliminar.";
+		}
+		ciudadRepository.delete(ciudad);
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
 
 }

@@ -8,5 +8,6 @@ import cl.devetel.test.ubicacionservice.domain.Ciudad;
 
 @Repository
 public interface CiudadRepository extends CrudRepository<Ciudad, Integer>  {
-		
+	
+	Ciudad findByDescripcion(String descripcion);
 }
