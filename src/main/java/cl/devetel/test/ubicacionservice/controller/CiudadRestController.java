@@ -31,7 +31,7 @@ public class CiudadRestController {
 	 * @author bverad
 	 */
 	@RequestMapping(value="ciudad/eliminar/{id}", method=RequestMethod.GET)
-	public ResponseEntity<String> eliminarCiudadPorId(@PathVariable(name="id") Integer id){
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="id") Integer id){
 		Ciudad ciudad = ciudadRepository.findById(id).get();
 		String mensaje = "Ciudad eliminada con exito : " + ciudad.getDescripcion();
 		if(ciudad == null) {
@@ -48,7 +48,7 @@ public class CiudadRestController {
 	 * @author bverad
 	 */
 	@RequestMapping(value="ciudad/eliminar/descripcion/{descripcion}", method=RequestMethod.GET)
-	public ResponseEntity<String> eliminarCiudadPorDescripcion(@PathVariable(name="descripcion") String descripcion){
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="descripcion") String descripcion){
 		Ciudad ciudad = ciudadRepository.findByDescripcion(descripcion);
 		String mensaje = "Ciudad eliminada con exito : " + ciudad.getDescripcion();
 		if(ciudad == null) {
@@ -65,7 +65,7 @@ public class CiudadRestController {
 	 * @author bverad
 	 */
 	@RequestMapping(value="ciudad/actualizar/{id}/descripcion/{descripcion}", method=RequestMethod.GET)
-	public ResponseEntity<String> actualizarCiudad(@PathVariable(name="id") Integer id,
+	public ResponseEntity<String> elinarCiudadPorId(@PathVariable(name="id") Integer id,
 			@PathVariable(name="descripcion") String descripcion){
 		Ciudad ciudad = ciudadRepository.findById(id).get();
 		String mensaje = "Error";
