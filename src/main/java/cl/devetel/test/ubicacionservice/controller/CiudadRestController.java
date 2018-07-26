@@ -79,5 +79,30 @@ public class CiudadRestController {
 		
 		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
 	}
+	
+	/**
+	 * Crea una nueva ciudad
+	 * @param descripcion
+	 * @return
+	 * @author bverad 
+	 */
+	@RequestMapping(value="ciudad/crear/{descripcion}", method=RequestMethod.GET)
+	public ResponseEntity<String> crearCiudad(@PathVariable(name="descripcion") String descripcion){
+		String mensaje = "";
+		Ciudad ciudad = new Ciudad();
+		ciudad.setDescripcion(descripcion);
+		try {
+			ciudadRepository.save(ciudad);
+			mensaje = "La ciudad " + ciudad.getDescripcion() + " ha sido creada con exito";
+		}catch(Exception e) {
+			mensaje = "Ocurrio un error al crear la ciudad " + ciudad.getDescripcion();
+			e.printStackTrace();
+		}
+		
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
+	
+	
+	
 
 }
