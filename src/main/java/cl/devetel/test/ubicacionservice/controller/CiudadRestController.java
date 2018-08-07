@@ -102,6 +102,27 @@ public class CiudadRestController {
 		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
 	}
 	
+	/**
+	 * Conteo de ciudades
+	 * @param 
+	 * @return
+	 * @author bverad 
+	 */
+	@RequestMapping(value="ciudad/conteo", method=RequestMethod.GET)
+	public ResponseEntity<String> contarCiudades(){
+		String mensaje = "";
+
+		try {
+			Long conteo = ciudadRepository.count();
+			mensaje = "La cantidad de ciudades es la siguiente : " + conteo;
+		}catch(Exception e) {
+			mensaje = "Ocurrio un error al contabilizar ciudades";
+			e.printStackTrace();
+		}
+		
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
+	
 	
 	
 
