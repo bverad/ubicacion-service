@@ -123,6 +123,17 @@ public class CiudadRestController {
 		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
 	}
 	
+	/**
+	 * Conteo de ciudades
+	 * @param 
+	 * @return
+	 * @author bverad 
+	 */
+	@RequestMapping(value="ciudad/saludo/{nombre}", method=RequestMethod.GET)
+	public ResponseEntity<String> obtenerSaludo(@PathVariable(name="nombre") String nombre){
+		String mensaje = "Hola : " + nombre;
+		return new ResponseEntity<String>(mensaje, HttpStatus.OK);
+	}
 	
 	
 
